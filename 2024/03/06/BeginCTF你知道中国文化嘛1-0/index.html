@@ -22,7 +22,7 @@
 
   
 
-  <title>Hello World | Hexo</title>
+  <title>BeginCTF你知道中国文化嘛1.0 | Glea0&#39;s blog</title>
 
   
 
@@ -58,7 +58,7 @@
     <div class="navbar-logo">
       <a href="/">
         
-          Hexo
+          Glea0&#39;s blog
         
       </a>
     </div>
@@ -99,11 +99,11 @@
     <div class="header-content">
       <div class="post-text layout-block">
         <div class="layout-margin">
-          <h1 class="title-wrap">Hello World</h1>
+          <h1 class="title-wrap">BeginCTF你知道中国文化嘛1.0</h1>
           <h2 class="title-sub-wrap">
             <strong>John Doe</strong>
             <span>发布于</span>
-            <time  class="article-date" datetime="2024-03-05T16:17:21.217Z" itemprop="datePublished">2024-03-06</time>
+            <time  class="article-date" datetime="2024-03-06T02:42:59.000Z" itemprop="datePublished">2024-03-06</time>
           </h2>
           
           
@@ -134,19 +134,37 @@
       
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+        <p>拿到题目一眼base</p>
+<p>利用CaptfEncoder尝试解密，在base32中，发现八卦符号。</p>
+<p><img src="file:///C:\Users\86151\AppData\Local\Temp\ksohtml7512\wps1.jpg" alt="img"></p>
+<p>观察base32的解码可知，存在5处不能识别的地方</p>
+<p><img src="file:///C:\Users\86151\AppData\Local\Temp\ksohtml7512\wps2.jpg" alt="img"> </p>
+<p>仔细观察源码发现确实存在5处特殊符号分别为：$ &amp; @</p>
+<p>尝试利用base32正常解码的部分得到八卦图解码的信息（即$前面的部分），多试几次后发现为社会主义核心价值观编码</p>
+<p><img src="file:///C:\Users\86151\AppData\Local\Temp\ksohtml7512\wps3.jpg" alt="img"> </p>
+<p><img src="file:///C:\Users\86151\AppData\Local\Temp\ksohtml7512\wps4.jpg" alt="img"> </p>
+<p>利用脚本发现</p>
+<p><img src="file:///C:\Users\86151\AppData\Local\Temp\ksohtml7512\wps5.jpg" alt="img"> </p>
+<p>18个八卦编码可以生成一个社会主义核心价值观编码，根据编码特点，此时有两种思路</p>
+<p>第一种从原来的编码下手，通过查找相似代码，猜测特殊符号原本意思。</p>
+<p>第二种从八卦图编码下手，结合脚本穷举所有社会主义核心价值观价值编码，以18个为一组，将含有乱码的地方查找替换为正确的部分，但这样耗时较多。</p>
+<p>这里我采用了第一种方法，通过记事本或notpad++（更好找不同）将特殊符号分别替换掉</p>
+<p>$-&gt;S</p>
+<p>&amp;-&gt;P</p>
+<p>@-&gt;2</p>
+<p><img src="file:///C:\Users\86151\AppData\Local\Temp\ksohtml7512\wps6.jpg" alt="img"> </p>
+<p>再次解码，得到较为完整的社会主义核心价值观编码</p>
+<p><img src="file:///C:\Users\86151\AppData\Local\Temp\ksohtml7512\wps7.jpg" alt="img"> </p>
+<p>仔细观察发现，存在错误：腪由、富嬺。手动更改为自由，富强。</p>
+<p>正确解密后如下：</p>
+<p>公正文明公正和谐公正平等文明友善法治和谐法治公正文明公正平等公正平等和谐爱国公正平等和谐和谐公正自由和谐爱国和谐富强和谐爱国公正公正公正和谐公正法治公正平等公正自由文明诚信和谐和谐文明公正平等公正公正和谐敬业和谐自由公正公正法治友善法治公正敬业法治友善平等公正民主和谐法治文明诚信和谐和谐民主和谐爱国文明诚信和谐和谐民主和谐文明公正友善爱国和谐爱国和谐民主公正和谐公正平等</p>
+<p>再次解码得到</p>
+<p>bce-7bee8e3d808fcged-2ef94f}i{a7-18-12n81ce</p>
+<p><img src="file:///C:\Users\86151\AppData\Local\Temp\ksohtml7512\wps8.jpg" alt="img"> </p>
+<p>猜测为栅栏密码，在w型栅栏第5栏时是解得正确的flag</p>
+<p><img src="file:///C:\Users\86151\AppData\Local\Temp\ksohtml7512\wps9.jpg" alt="img"> </p>
+<p>begin{eec8da87-ee32-11ed-8f8c-907841e2ffbc}</p>
+<p>此次解出，大部分在于幸运。编码的特殊性导致可以人工纠正影响。经测试实际问题在与&amp;的取值错误。</p>
 
       </section>
 
@@ -265,14 +283,6 @@
           <a href="https://github.com/miiiku/" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
             <svg class="icon icon-github" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <path d="M64.6 512c0 195.6 125.4 361.9 300.1 422.9 23.5 5.9 19.9-10.8 19.9-22.2v-77.6c-135.8 15.9-141.3-74-150.5-89-18.5-31.5-61.9-39.5-49-54.5 31-15.9 62.5 4 98.9 58 26.4 39.1 77.9 32.5 104.1 26 5.7-23.5 17.9-44.5 34.7-60.9-140.7-25.2-199.4-111.1-199.4-213.3 0-49.5 16.4-95.1 48.4-131.8-20.4-60.6 1.9-112.4 4.9-120.1 58.2-5.2 118.5 41.6 123.3 45.3 33.1-8.9 70.8-13.7 112.9-13.7 42.4 0 80.3 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.4-43.9 2.9 7.7 24.7 58.3 5.5 118.1 32.5 36.8 49 82.8 49 132.4 0 102.3-59 188.3-200.2 213.2 23.5 23.3 38.1 55.5 38.1 91.1v112.7c0.8 9 0 17.9 15.1 17.9C832.7 877 960.4 709.4 960.4 512.1c0-247.5-200.6-447.9-447.9-447.9C265 64.1 64.6 264.5 64.6 512z"></path>
-</svg>
-          </a>
-        
-      
-        
-          <a href="https://twitter.com/guanquanhong" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
-            <svg class="icon icon-twitter" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <path d="M962.285714 233.142857q-38.285714 56-92.571429 95.428571 0.571429 8 0.571429 24 0 74.285714-21.714286 148.285714t-66 142-105.428571 120.285714-147.428571 83.428571-184.571429 31.142857q-154.857143 0-283.428571-82.857143 20 2.285714 44.571429 2.285714 128.571429 0 229.142857-78.857143-60-1.142857-107.428571-36.857143t-65.142857-91.142857q18.857143 2.857143 34.857143 2.857143 24.571429 0 48.571429-6.285714-64-13.142857-106-63.714286t-42-117.428571l0-2.285714q38.857143 21.714286 83.428571 23.428571-37.714286-25.142857-60-65.714286t-22.285714-88q0-50.285714 25.142857-93.142857 69.142857 85.142857 168.285714 136.285714t212.285714 56.857143q-4.571429-21.714286-4.571429-42.285714 0-76.571429 54-130.571429t130.571429-54q80 0 134.857143 58.285714 62.285714-12 117.142857-44.571429-21.142857 65.714286-81.142857 101.714286 53.142857-5.714286 106.285714-28.571429z"></path>
 </svg>
           </a>
         
