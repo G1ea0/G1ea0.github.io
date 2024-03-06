@@ -136,15 +136,15 @@
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
         <p>拿到题目一眼base</p>
 <p>利用CaptfEncoder尝试解密，在base32中，发现八卦符号。</p>
-<p><img src="/BeginCTF%E4%BD%A0%E7%9F%A5%E9%81%93%E4%B8%AD%E5%9B%BD%E6%96%87%E5%8C%96%E5%98%9B1-0/wps1.jpg" alt="img"></p>
+<p><img src="/2024/03/06/BeginCTF%E4%BD%A0%E7%9F%A5%E9%81%93%E4%B8%AD%E5%9B%BD%E6%96%87%E5%8C%96%E5%98%9B1-0/BeginCTF%E4%BD%A0%E7%9F%A5%E9%81%93%E4%B8%AD%E5%9B%BD%E6%96%87%E5%8C%96%E5%98%9B1-0/wps1-17096961805282.jpg" alt="img"> </p>
 <p>观察base32的解码可知，存在5处不能识别的地方</p>
-<p><img src="/BeginCTF%E4%BD%A0%E7%9F%A5%E9%81%93%E4%B8%AD%E5%9B%BD%E6%96%87%E5%8C%96%E5%98%9B1-0/wps2.jpg" alt="img"> </p>
+<p><img src="/2024/03/06/BeginCTF%E4%BD%A0%E7%9F%A5%E9%81%93%E4%B8%AD%E5%9B%BD%E6%96%87%E5%8C%96%E5%98%9B1-0/BeginCTF%E4%BD%A0%E7%9F%A5%E9%81%93%E4%B8%AD%E5%9B%BD%E6%96%87%E5%8C%96%E5%98%9B1-0/wps2-17096961805271.jpg" alt="img"> </p>
 <p>仔细观察源码发现确实存在5处特殊符号分别为：$ &amp; @</p>
 <p>尝试利用base32正常解码的部分得到八卦图解码的信息（即$前面的部分），多试几次后发现为社会主义核心价值观编码</p>
-<p><img src="/BeginCTF%E4%BD%A0%E7%9F%A5%E9%81%93%E4%B8%AD%E5%9B%BD%E6%96%87%E5%8C%96%E5%98%9B1-0/wps3.jpg" alt="img"> </p>
-<p><img src="/BeginCTF%E4%BD%A0%E7%9F%A5%E9%81%93%E4%B8%AD%E5%9B%BD%E6%96%87%E5%8C%96%E5%98%9B1-0/wps4.jpg" alt="img"> </p>
+<p><img src="/2024/03/06/BeginCTF%E4%BD%A0%E7%9F%A5%E9%81%93%E4%B8%AD%E5%9B%BD%E6%96%87%E5%8C%96%E5%98%9B1-0/BeginCTF%E4%BD%A0%E7%9F%A5%E9%81%93%E4%B8%AD%E5%9B%BD%E6%96%87%E5%8C%96%E5%98%9B1-0/wps3-17096961805298.jpg" alt="img"> </p>
+<p><img src="/2024/03/06/BeginCTF%E4%BD%A0%E7%9F%A5%E9%81%93%E4%B8%AD%E5%9B%BD%E6%96%87%E5%8C%96%E5%98%9B1-0/BeginCTF%E4%BD%A0%E7%9F%A5%E9%81%93%E4%B8%AD%E5%9B%BD%E6%96%87%E5%8C%96%E5%98%9B1-0/wps4-17096961805284.jpg" alt="img"> </p>
 <p>利用脚本发现</p>
-<p><img src="/BeginCTF%E4%BD%A0%E7%9F%A5%E9%81%93%E4%B8%AD%E5%9B%BD%E6%96%87%E5%8C%96%E5%98%9B1-0/wps5.jpg" alt="img"> </p>
+<p><img src="/2024/03/06/BeginCTF%E4%BD%A0%E7%9F%A5%E9%81%93%E4%B8%AD%E5%9B%BD%E6%96%87%E5%8C%96%E5%98%9B1-0/BeginCTF%E4%BD%A0%E7%9F%A5%E9%81%93%E4%B8%AD%E5%9B%BD%E6%96%87%E5%8C%96%E5%98%9B1-0/wps5-17096961805287.jpg" alt="img"> </p>
 <p>18个八卦编码可以生成一个社会主义核心价值观编码，根据编码特点，此时有两种思路</p>
 <p>第一种从原来的编码下手，通过查找相似代码，猜测特殊符号原本意思。</p>
 <p>第二种从八卦图编码下手，结合脚本穷举所有社会主义核心价值观价值编码，以18个为一组，将含有乱码的地方查找替换为正确的部分，但这样耗时较多。</p>
@@ -152,17 +152,17 @@
 <p>$-&gt;S</p>
 <p>&amp;-&gt;P</p>
 <p>@-&gt;2</p>
-<p><img src="/BeginCTF%E4%BD%A0%E7%9F%A5%E9%81%93%E4%B8%AD%E5%9B%BD%E6%96%87%E5%8C%96%E5%98%9B1-0/wps6.jpg" alt="img"> </p>
+<p><img src="/2024/03/06/BeginCTF%E4%BD%A0%E7%9F%A5%E9%81%93%E4%B8%AD%E5%9B%BD%E6%96%87%E5%8C%96%E5%98%9B1-0/BeginCTF%E4%BD%A0%E7%9F%A5%E9%81%93%E4%B8%AD%E5%9B%BD%E6%96%87%E5%8C%96%E5%98%9B1-0/wps6-17096961805283.jpg" alt="img"> </p>
 <p>再次解码，得到较为完整的社会主义核心价值观编码</p>
-<p><img src="/BeginCTF%E4%BD%A0%E7%9F%A5%E9%81%93%E4%B8%AD%E5%9B%BD%E6%96%87%E5%8C%96%E5%98%9B1-0/wps7.jpg" alt="img"> </p>
+<p><img src="/2024/03/06/BeginCTF%E4%BD%A0%E7%9F%A5%E9%81%93%E4%B8%AD%E5%9B%BD%E6%96%87%E5%8C%96%E5%98%9B1-0/BeginCTF%E4%BD%A0%E7%9F%A5%E9%81%93%E4%B8%AD%E5%9B%BD%E6%96%87%E5%8C%96%E5%98%9B1-0/wps7-17096961805299.jpg" alt="img"> </p>
 <p>仔细观察发现，存在错误：腪由、富嬺。手动更改为自由，富强。</p>
 <p>正确解密后如下：</p>
 <p>公正文明公正和谐公正平等文明友善法治和谐法治公正文明公正平等公正平等和谐爱国公正平等和谐和谐公正自由和谐爱国和谐富强和谐爱国公正公正公正和谐公正法治公正平等公正自由文明诚信和谐和谐文明公正平等公正公正和谐敬业和谐自由公正公正法治友善法治公正敬业法治友善平等公正民主和谐法治文明诚信和谐和谐民主和谐爱国文明诚信和谐和谐民主和谐文明公正友善爱国和谐爱国和谐民主公正和谐公正平等</p>
 <p>再次解码得到</p>
 <p>bce-7bee8e3d808fcged-2ef94f}i{a7-18-12n81ce</p>
-<p><img src="/BeginCTF%E4%BD%A0%E7%9F%A5%E9%81%93%E4%B8%AD%E5%9B%BD%E6%96%87%E5%8C%96%E5%98%9B1-0/wps8.jpg" alt="img"> </p>
+<p><img src="/2024/03/06/BeginCTF%E4%BD%A0%E7%9F%A5%E9%81%93%E4%B8%AD%E5%9B%BD%E6%96%87%E5%8C%96%E5%98%9B1-0/BeginCTF%E4%BD%A0%E7%9F%A5%E9%81%93%E4%B8%AD%E5%9B%BD%E6%96%87%E5%8C%96%E5%98%9B1-0/wps8-17096961805286.jpg" alt="img"> </p>
 <p>猜测为栅栏密码，在w型栅栏第5栏时是解得正确的flag</p>
-<p><img src="/BeginCTF%E4%BD%A0%E7%9F%A5%E9%81%93%E4%B8%AD%E5%9B%BD%E6%96%87%E5%8C%96%E5%98%9B1-0/wps9.jpg" alt="img"> </p>
+<p><img src="/2024/03/06/BeginCTF%E4%BD%A0%E7%9F%A5%E9%81%93%E4%B8%AD%E5%9B%BD%E6%96%87%E5%8C%96%E5%98%9B1-0/BeginCTF%E4%BD%A0%E7%9F%A5%E9%81%93%E4%B8%AD%E5%9B%BD%E6%96%87%E5%8C%96%E5%98%9B1-0/wps9-17096961805285.jpg" alt="img"> </p>
 <p>begin{eec8da87-ee32-11ed-8f8c-907841e2ffbc}</p>
 <p>此次解出，大部分在于幸运。编码的特殊性导致可以人工纠正影响。经测试实际问题在与&amp;的取值错误。</p>
 
