@@ -40,11 +40,11 @@
   --soft-shadow: 3px;
 }
 :root.theme-light {
-  --theme-bg-primary: #f5f8fa;
-  --theme-bg-high: #fff;
-  --theme-bg-shadow: #dddfe1;
-  --theme-bg-actvie1: #dddfe1;
-  --theme-bg-actvie2: #fff;
+  --theme-bg-primary: rgba(245,248,250,0.7);
+  --theme-bg-high: rgba(245,248,250,0.7);
+  --theme-bg-shadow: rgba(221,223,225,0.7);
+  --theme-bg-actvie1: rgba(221,223,225,0.7);
+  --theme-bg-actvie2: rgba(245,248,250,0.7);
   --theme-text-active: #f857a6;
   --theme-text-light: #fff;
   --theme-text-primary: #3e3e5f;
@@ -54,11 +54,11 @@
   --theme-border-secondary: #ebedef;
 }
 :root.theme-dark {
-  --theme-bg-primary: #1e2428;
-  --theme-bg-high: #303a40;
-  --theme-bg-shadow: #0c0e10;
-  --theme-bg-actvie1: #1b2024;
-  --theme-bg-actvie2: #20272b;
+  --theme-bg-primary: rgba(30,36,40,0.7);
+  --theme-bg-high: rgba(30,36,40,0.7);
+  --theme-bg-shadow: rgba(30,36,40,0.7);
+  --theme-bg-actvie1: rgba(30,36,40,0.7);
+  --theme-bg-actvie2: rgba(30,36,40,0.7);
   --theme-text-active: #ca5388;
   --theme-text-light: #d7dfe6;
   --theme-text-primary: #adbac7;
@@ -69,11 +69,11 @@
 }
 @media (prefers-color-scheme: light) {
   :root {
-    --theme-bg-primary: #f5f8fa;
-    --theme-bg-high: #fff;
-    --theme-bg-shadow: #dddfe1;
-    --theme-bg-actvie1: #dddfe1;
-    --theme-bg-actvie2: #fff;
+    --theme-bg-primary: rgba(245,248,250,0.7);
+    --theme-bg-high: rgba(245,248,250,0.7);
+    --theme-bg-shadow: rgba(221,223,225,0.7);
+    --theme-bg-actvie1: rgba(221,223,225,0.7);
+    --theme-bg-actvie2: rgba(245,248,250,0.7);
     --theme-text-active: #f857a6;
     --theme-text-light: #fff;
     --theme-text-primary: #3e3e5f;
@@ -85,11 +85,11 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --theme-bg-primary: #1e2428;
-    --theme-bg-high: #303a40;
-    --theme-bg-shadow: #0c0e10;
-    --theme-bg-actvie1: #1b2024;
-    --theme-bg-actvie2: #20272b;
+    --theme-bg-primary: rgba(30,36,40,0.7);
+    --theme-bg-high: rgba(30,36,40,0.7);
+    --theme-bg-shadow: rgba(30,36,40,0.7);
+    --theme-bg-actvie1: rgba(30,36,40,0.7);
+    --theme-bg-actvie2: rgba(30,36,40,0.7);
     --theme-text-active: #ca5388;
     --theme-text-light: #d7dfe6;
     --theme-text-primary: #adbac7;
